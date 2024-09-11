@@ -1,56 +1,55 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { v4 as uuidv4 } from 'uuid';
 import { IsString } from 'class-validator';
 
 @Schema()
 export class Arma extends Document {
-  @Prop({ default: uuidv4 }) // Genera un UUID por defecto para el campo id
-  @IsString()
-  id: string;
+  @Prop({ default: Date.now })
+  createdAt: Date;
 
-  @Prop({ required: true }) // Campo requerido
+  @Prop({ required: true })
   @IsString()
   codigo: string;
 
-  @Prop({ required: true }) // Campo requerido
+  @Prop({ required: true })
   @IsString()
   nroarma: string;
 
-  @Prop({ required: true }) // Campo requerido
+  @Prop({ required: true })
   @IsString()
   estado: string;
 
-  @Prop({ required: true }) // Campo requerido
+  @Prop({ required: true })
   @IsString()
   clasification: string;
 
-  @Prop({ required: true }) // Campo requerido
+  @Prop({ required: true })
   @IsString()
   propietario: string;
 
-  @Prop({ required: true }) // Campo requerido
+  @Prop({ required: true })
   @IsString()
   modelo: string;
 
-  @Prop({ required: true }) // Campo requerido
+  @Prop({ required: true })
   @IsString()
   calibre: string;
 
-  @Prop({ required: false }) // Campo opcional
+  @Prop({ required: false })
   @IsString()
   observations: string;
 
-  @Prop({ required: true }) // Campo requerido
+  @Prop({ required: true })
   @IsString()
   industria: string;
 
-  @Prop({ required: true }) // Campo requerido
+  @Prop({ required: true })
   @IsString()
   armamento: string;
 
-  @Prop({ default: Date.now }) // Campo requerido
-  createdAt: Date;
+  @Prop({ required: true })
+  @IsString()
+  inInventory: string;
 }
 
 export const ArmaSchema = SchemaFactory.createForClass(Arma);

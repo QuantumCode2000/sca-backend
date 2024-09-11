@@ -1,8 +1,7 @@
 import { IsString, IsOptional } from 'class-validator';
 
 export class CreateArmaDto {
-  @IsString()
-  readonly id?: string; // Campo opcional, se genera automáticamente
+  readonly createdAt?: Date;
 
   @IsString()
   readonly codigo: string;
@@ -34,4 +33,7 @@ export class CreateArmaDto {
 
   @IsString()
   readonly armamento: string;
+
+  @IsString()
+  readonly inInventory: string;
 }

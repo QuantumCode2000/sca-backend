@@ -1,11 +1,11 @@
-import { IsString, IsDate } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateMovimientoDto {
-  @IsDate()
-  readonly fechaSalida: Date;
+  @IsString()
+  readonly fechaSalida: string;
 
-  @IsDate()
-  readonly fechaRegreso: Date;
+  @IsString()
+  readonly fechaRegreso: string;
 
   @IsString()
   readonly codigo: string;

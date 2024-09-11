@@ -7,6 +7,7 @@ import { MovimientosModule } from './movimientos/movimientos.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -15,7 +16,7 @@ import { AuthModule } from './auth/auth.module';
     UsuariosModule,
     ArmasModule,
     MovimientosModule,
-    MongooseModule.forRoot('mongodb://localhost/nest'),
+    MongooseModule.forRoot(process.env.MONGO_PUBLIC_URL || 'mongodb://localhost/nest'),
     AuthModule,
   ],
   controllers: [AppController],

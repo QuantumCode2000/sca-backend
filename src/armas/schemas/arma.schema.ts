@@ -1,55 +1,115 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { IsString } from 'class-validator';
+
+interface EncryptedData {
+  aes_encrypted_data: string;
+  rsa_encrypted_key: string;
+  iv: string;
+}
 
 @Schema()
 export class Arma extends Document {
   @Prop({ default: Date.now })
   createdAt: Date;
 
-  @Prop({ required: true })
-  @IsString()
-  codigo: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  codigo: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  nroarma: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  nroarma: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  estado: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  estado: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  clasification: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  clasification: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  propietario: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  propietario: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  modelo: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  modelo: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  calibre: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  calibre: EncryptedData;
 
-  @Prop({ required: false })
-  @IsString()
-  observations: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  observations: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  industria: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  industria: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  armamento: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  armamento: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  inInventory: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  inInventory: EncryptedData;
 }
 
 export const ArmaSchema = SchemaFactory.createForClass(Arma);

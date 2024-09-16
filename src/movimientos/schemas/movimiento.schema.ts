@@ -1,49 +1,84 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { IsString, IsDate, IsOptional } from 'class-validator';
+
+interface EncryptedData {
+  aes_encrypted_data: string;
+  rsa_encrypted_key: string;
+  iv: string;
+}
 
 @Schema()
 export class Movimiento extends Document {
-  @Prop({ required: true })
-  @IsString()
-  fechaSalida: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  fechaSalida: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  fechaRegreso: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  fechaRegreso: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  codigo: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  codigo: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  solicitante: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  solicitante: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  motivo: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  motivo: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  actaSalida: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  actaSalida: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  actaRegreso: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  actaRegreso: EncryptedData;
 
-  @Prop({ default: Date.now }) // Fecha de creación
-  @IsDate()
+  @Prop({ default: Date.now })
   createdAt: Date;
 
   @Prop({ default: null })
-  @IsOptional()
-  @IsDate()
   updatedAt?: Date;
 
   @Prop({ default: null })
-  @IsOptional()
-  @IsDate()
   deletedAt?: Date;
 }
 

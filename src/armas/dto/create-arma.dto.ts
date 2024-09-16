@@ -1,39 +1,31 @@
-import { IsString, IsOptional } from 'class-validator';
+interface EncryptedData {
+  aes_encrypted_data: string;
+  rsa_encrypted_key: string;
+  iv: string;
+}
 
 export class CreateArmaDto {
   readonly createdAt?: Date;
 
-  @IsString()
-  readonly codigo: string;
+  readonly codigo: EncryptedData;
 
-  @IsString()
-  readonly nroarma: string;
+  readonly nroarma: EncryptedData;
 
-  @IsString()
-  readonly estado: string;
+  readonly estado: EncryptedData;
 
-  @IsString()
-  readonly clasification: string;
+  readonly clasification: EncryptedData;
 
-  @IsString()
-  readonly propietario: string;
+  readonly propietario: EncryptedData;
 
-  @IsString()
-  readonly modelo: string;
+  readonly modelo: EncryptedData;
 
-  @IsString()
-  readonly calibre: string;
+  readonly calibre: EncryptedData;
 
-  @IsString()
-  @IsOptional()
-  readonly observations?: string;
+  readonly observations?: EncryptedData;
 
-  @IsString()
-  readonly industria: string;
+  readonly industria: EncryptedData;
 
-  @IsString()
-  readonly armamento: string;
+  readonly armamento: EncryptedData;
 
-  @IsString()
-  readonly inInventory: string;
+  readonly inInventory: EncryptedData;
 }

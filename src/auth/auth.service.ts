@@ -22,14 +22,26 @@ export class AuthService {
       ({ _id, __v, createdAt, ...usuario }) => usuario,
     );
 
-    const usuariosDesencriptados = await axios.post(
+    const removeIdFields = (arr) => {
+      return arr.map((item) => {
+        Object.keys(item).forEach((key) => {
+          if (item[key]._id) {
+            delete item[key]._id;
+          }
+        });
+        return item;
+      });
+    };
+
+    const dataForWork = removeIdFields(usuariosSinId);
+    const response = await axios.post(
       `${ENCRYPTION_API_URL}/decrypt_objects`,
-      {
-        objects: usuariosSinId,
-      },
+      dataForWork, // Enviar directamente el arreglo de objetos
     );
 
-    const user = usuariosDesencriptados.data.data.find(
+    console.log(response);
+
+    const user = response.data.data.find(
       (usuario) => usuario.correo === correo,
     );
 

@@ -1,24 +1,14 @@
-import { IsString } from 'class-validator';
-
+interface EncryptedData {
+  aes_encrypted_data: string;
+  rsa_encrypted_key: string;
+  iv: string;
+}
 export class CreateMovimientoDto {
-  @IsString()
-  readonly fechaSalida: string;
-
-  @IsString()
-  readonly fechaRegreso: string;
-
-  @IsString()
-  readonly codigo: string;
-
-  @IsString()
-  readonly solicitante: string;
-
-  @IsString()
-  readonly motivo: string;
-
-  @IsString()
-  readonly actaSalida: string;
-
-  @IsString()
-  readonly actaRegreso: string;
+  readonly fechaSalida: EncryptedData;
+  readonly fechaRegreso: EncryptedData;
+  readonly codigo: EncryptedData;
+  readonly solicitante: EncryptedData;
+  readonly motivo: EncryptedData;
+  readonly actaSalida: EncryptedData;
+  readonly actaRegreso: EncryptedData;
 }

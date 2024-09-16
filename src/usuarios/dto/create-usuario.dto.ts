@@ -1,52 +1,37 @@
-import { IsString, IsEmail, IsOptional, Matches } from 'class-validator';
+// import { IsOptional } from 'class-validator';
+
+interface EncryptedData {
+  aes_encrypted_data: string;
+  rsa_encrypted_key: string;
+  iv: string;
+}
 
 export class CreateUsuarioDto {
-  readonly createdAt?: Date; // Campo opcional, se asigna automáticamente
+  readonly createdAt?: Date;
 
-  @IsString()
-  readonly ci: string;
+  readonly ci: EncryptedData;
 
-  @IsString()
-  readonly extension: string;
+  readonly extension: EncryptedData;
 
-  @IsString()
-  @IsOptional()
-  readonly grado?: string;
+  readonly grado?: EncryptedData;
 
-  @IsString()
-  @IsOptional()
-  readonly especialidad?: string;
+  readonly especialidad?: EncryptedData;
 
-  @IsString()
-  readonly nombre: string;
+  readonly nombre: EncryptedData;
 
-  @IsString()
-  readonly apellidoPaterno: string;
+  readonly apellidoPaterno: EncryptedData;
 
-  @IsString()
-  @IsOptional()
-  readonly apellidoMaterno?: string;
+  readonly apellidoMaterno?: EncryptedData;
 
-  readonly cm?: string;
+  readonly cm?: EncryptedData;
 
-  
-  @IsString()
-  @IsOptional()
-  readonly correo: string;x
+  readonly correo: EncryptedData;
 
-  @IsString()
-  readonly inSystemPermission: string;
+  readonly inSystemPermission: EncryptedData;
 
-  @IsString()
-  readonly rol: string;
+  readonly rol: EncryptedData;
 
-  @IsString()
-  readonly estado: string;
+  readonly estado: EncryptedData;
 
-  @IsString({ message: 'El campo contraseña debe ser una cadena de texto.' })
-  @Matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/, {
-    message:
-      'La contraseña es demasiado débil. Debe contener al menos una letra mayúscula, una letra minúscula y un número, y tener al menos 8 caracteres.',
-  })
-  readonly password: string;
+  readonly password: EncryptedData;
 }

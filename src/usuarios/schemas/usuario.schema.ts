@@ -1,68 +1,141 @@
-import { IsString, IsEmail, IsOptional, Matches } from 'class-validator';
-import * as bcrypt from 'bcrypt';
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+
+interface EncryptedData {
+  aes_encrypted_data: string;
+  rsa_encrypted_key: string;
+  iv: string;
+}
 
 @Schema()
 export class Usuario extends Document {
   @Prop({ default: Date.now })
   createdAt: Date;
 
-  @Prop({ required: true })
-  @IsString()
-  ci: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+    required: true,
+  })
+  ci: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  extension: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+    required: true,
+  })
+  extension: EncryptedData;
 
-  @Prop()
-  @IsString()
-  @IsOptional()
-  grado: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  grado?: EncryptedData;
 
-  @Prop()
-  @IsString()
-  @IsOptional()
-  especialidad: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  especialidad?: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  nombre: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+    required: true,
+  })
+  nombre: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  apellidoPaterno: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+    required: true,
+  })
+  apellidoPaterno: EncryptedData;
 
-  @Prop()
-  @IsString()
-  @IsOptional()
-  apellidoMaterno: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  apellidoMaterno?: EncryptedData;
 
-  @Prop()
-  @IsString()
-  @IsOptional()
-  cm: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  cm?: EncryptedData;
 
-  @Prop({ required: true, unique: true })
-  @IsString()
-  correo: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+  })
+  correo?: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  inSystemPermission: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+    required: true,
+  })
+  inSystemPermission: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  rol: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+    required: true,
+  })
+  rol: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  estado: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+    required: true,
+  })
+  estado: EncryptedData;
 
-  @Prop({ required: true })
-  @IsString()
-  password: string;
+  @Prop({
+    type: {
+      aes_encrypted_data: { type: String, required: true },
+      rsa_encrypted_key: { type: String, required: true },
+      iv: { type: String, required: true },
+    },
+    required: true,
+  })
+  password: EncryptedData;
 }
 
 export const UsuarioSchema = SchemaFactory.createForClass(Usuario);

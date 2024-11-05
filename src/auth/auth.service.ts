@@ -36,10 +36,8 @@ export class AuthService {
     const dataForWork = removeIdFields(usuariosSinId);
     const response = await axios.post(
       `${ENCRYPTION_API_URL}/decrypt_objects`,
-      dataForWork, // Enviar directamente el arreglo de objetos
+      dataForWork,
     );
-
-    console.log(response);
 
     const user = response.data.data.find(
       (usuario) => usuario.correo === correo,
@@ -52,6 +50,13 @@ export class AuthService {
     const isPasswordValid = password === user.password;
     if (!isPasswordValid) {
       throw new UnauthorizedException('Contraseña no válida');
+    }
+
+    const existPermission =
+      user.rol === 'Administrador' || user.rol === 'Encargado' ? true : false;
+
+    if (!existPermission) {
+      throw new UnauthorizedException('No tienes permisos suficientes');
     }
 
     const payload = {
